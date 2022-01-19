@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ToDo</string>
+    <string name="spn_urgency_low_urgency">Faible priorité</string>
+    <string name="spn_urgency_medium_urgency">Moyenne priorité</string>
+    <string name="spn_urgency_high_urgency">Grande priorité</string>
+    <string name="add">Ajouter</string>
+    <string name="cancel">Annuler</string>
+    <string name="toast_not_enough_characters">La saisie doit être de 3 caractères minimum.</string>
+</resources>
