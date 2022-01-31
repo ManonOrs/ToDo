@@ -67,11 +67,22 @@ public class addTodoActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.toast_not_enough_characters), Toast.LENGTH_LONG);
                     toast.show();
                 }else{
-                    Todos todo = new Todos(nameTodo, spnUrgency.getSelectedItem().toString());
+//                    Todos todo = new Todos(nameTodo, spnUrgency.getSelectedItem().toString());
+//
+//                    Intent resultIntent = new Intent();
+//                    resultIntent.putExtra("todo",todo);
+//                    setResult(addTodoActivity.RESULT_OK,resultIntent);
 
-                    Intent resultIntent = new Intent();
-                    resultIntent.putExtra("todo",todo);
-                    setResult(addTodoActivity.RESULT_OK,resultIntent);
+                    TodoDAO todoDAO = new TodoDAO(getApplicationContext());
+                    Todos todo = new Todos();
+
+                    todo.setName(nameTodo);
+                    todo.setUrgency(spnUrgency.getSelectedItem().toString());
+
+                    todoDAO.add(todo);
+
+                    setResult(addTodoActivity.RESULT_OK);
+
                     finish();
                 }
             }

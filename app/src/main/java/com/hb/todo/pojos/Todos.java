@@ -12,8 +12,16 @@ public class Todos implements Serializable {
         this.urgency = urgency;
     }
 
+    public Todos() {
+
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

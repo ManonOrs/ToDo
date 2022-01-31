@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.hb.todo.pojos.Todos;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvTodos;
@@ -24,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
         //Récupération des éléments de layout
         tvTodos = findViewById(R.id.tvTodos);
+        String tvTodosText = tvTodos.getText().toString();
+
+        TodoDAO todoDAO = new TodoDAO(this);
+        List<Todos>todos = todoDAO.list();
+        String tvTodosNewText = tvTodosText;
+        for(Todos todo : todos){
+            tvTodosNewText = tvTodosNewText + "\n" + todo.getName() + ": " +todo.getUrgency();
+        }
+
+        tvTodos.setText(tvTodosNewText);
     }
 
     @Override
@@ -54,9 +66,11 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == addTodoActivity.RESULT_OK) {
-            Todos result = (Todos) data.getSerializableExtra("todo");
-            String tvTodosText = tvTodos.getText().toString();
-            tvTodos.setText(tvTodosText + "\n" + result.getName() + ": " +result.getUrgency());
+//            Todos result = (Todos) data.getSerializableExtra("todo");
+//            String tvTodosText = tvTodos.getText().toString();
+//            tvTodos.setText(tvTodosText + "\n" + result.getName() + ": " +result.getUrgency());
+            finish();
+            startActivity(getIntent());
         }
         if (resultCode == addTodoActivity.RESULT_CANCELED) {
             // Write your code if there's no result
